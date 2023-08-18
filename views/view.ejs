@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body {
+            /* background-color: chartreuse; */
+            background: rgb(2, 0, 36);
+            background: linear-gradient(315deg, rgba(2, 0, 36, 1) 15%, rgba(9, 9, 121, 1) 65%, rgba(0, 212, 255, 1) 100%);
+        }
+
+        .card {
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <div class="container">
+            <div class="row align-items-center vh-100 justify-content-center">
+                <form action="/viewData" class="d-flex">
+                    <% data.map((val)=> { %>
+                        <div class="card" style="width: 18rem; margin: 0 15px;">
+                            <img src="<%= val.image %>" class="card-img-top" style="height: 300px;" />
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <%= val.name %>
+                                </h5>
+                                <p class="card-text">
+                                    <%= val.description %>
+                                </p>
+                                <p class="card-text">Price : $<%= val.price %>
+                                </p>
+                                <a href="/deleteData?id=<%= val.id %>" class="btn btn-primary">Delete</a>
+                                <a href="/editData?id=<%= val.id %>" class="btn btn-primary">Edit</a>
+                            </div>
+                        </div>
+                        <% }) %>
+                </form>
+                <button style="background-color: black; outline: none; border: none; width: 300px; padding: 10px; border-radius: 12px;">
+                    <a href="/" style="text-decoration: none; color: white;">Add Movie</a>
+                </button>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>
